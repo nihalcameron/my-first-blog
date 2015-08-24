@@ -11,10 +11,19 @@
 </head>
 <body>
     <div class="page-header">
+        <div class="pull-right">
+
+            {% if user.is_anonymous %}
+                <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+            {% else %}
+                <b>{{ user }}</b>
+                <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
+            {% endif %}
+        </div>
         {% if user.is_authenticated %}
             <a href="{% url "post_new" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
-        <h1><a href="">Django Girls Blog</a></h1>
+        <h1><a href="/">Django Guys Blog</a></h1>
     </div>
     <div class="content container">
         <div class="row">
